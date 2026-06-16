@@ -6,7 +6,6 @@ import TransitionEffect from "@/components/TransitionEffect";
 import Image from "next/image";
 import profilePic from "@/images/profile/binhnguyenanime.png";
 import AnimatedText from "@/components/AnimatedText";
-import HireMe from "@/components/HireMe";
 import Link from "next/link";
 import syn1608 from "@/images/syn1608.png";
 import ShineBorder from "@/components/magicui/shine-border";
@@ -65,7 +64,6 @@ export default function Home() {
           </div>
           <GoToTopComponent />
         </Layout>
-        <HireMe />
         <div>
           <ShineBorder className=" absolute right-8 bottom-8 inline-block w-24 bg-dark md:hidden">
             <div className="flex items-center">
