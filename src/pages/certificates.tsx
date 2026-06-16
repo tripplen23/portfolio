@@ -137,11 +137,11 @@ const FeaturedCertificate = ({
   );
 };
 
-const certificate = () => {
+const CertificatesPage = () => {
   return (
     <>
       <Head>
-        <title>Binh Nguyen | Certificates Page</title>
+        <title>Binh Nguyen | Certificates</title>
         <meta name="description" content="any description" />
       </Head>
       <TransitionEffect />
@@ -239,4 +239,4 @@ const certificate = () => {
   );
 };
 
-export default certificate;
+export default CertificatesPage;

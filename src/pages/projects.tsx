@@ -198,11 +198,11 @@ const Project = ({ type, title, img, link, github }: ProjectProps) => {
   );
 };
 
-const ProjectPage = () => {
+const ProjectsPage = () => {
   return (
     <>
       <Head>
-        <title>Binh Nguyen | Project Page</title>
+        <title>Binh Nguyen | Projects</title>
         <meta name="description" content="any description" />
       </Head>
       <TransitionEffect />
@@ -339,4 +339,4 @@ const ProjectPage = () => {
   );
 };
 
-export default ProjectPage;
+export default ProjectsPage;

@@ -63,10 +63,10 @@ export default function BlogPost({ meta, source }: PageProps) {
         <div className="flex min-h-[60vh] flex-col items-center justify-center">
           <h1 className="mb-4 text-4xl font-bold">Post not found</h1>
           <Link
-            href="/blog"
+            href="/blogs"
             className="text-dark/70 hover:underline dark:text-light/70"
           >
-            ← Back to blog
+            ← Back to blogs
           </Link>
         </div>
       </Layout>
@@ -133,7 +133,7 @@ export default function BlogPost({ meta, source }: PageProps) {
           {/* Back link */}
           <div className="mt-16 text-center">
             <Link
-              href="/blog"
+              href="/blogs"
               className="text-lg text-dark/70 hover:underline dark:text-light/70"
             >
               ← Back to all posts

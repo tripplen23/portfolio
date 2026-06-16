@@ -61,7 +61,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                     )}
                   </div>
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/blogs/${post.slug}`}
                     className="text-2xl font-bold hover:underline"
                   >
                     <h2>{post.title}</h2>
