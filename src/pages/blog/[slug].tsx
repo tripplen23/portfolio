@@ -114,12 +114,12 @@ export default function BlogPost({ meta, source }: PageProps) {
 
           {/* Cover Image */}
           {meta.coverImage && (
-            <div className="relative mx-auto mb-12 h-64 max-w-3xl overflow-hidden rounded-2xl px-4 md:h-96">
+            <div className="mx-auto mb-12 max-w-3xl px-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={meta.coverImage}
                 alt={meta.title}
-                className="h-full w-full object-cover"
+                className="w-full rounded-2xl"
                 referrerPolicy="no-referrer"
               />
             </div>
