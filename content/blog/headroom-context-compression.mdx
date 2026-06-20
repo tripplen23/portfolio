@@ -57,7 +57,7 @@ After the evaluation, [Nous rejected Headroom as a dependency](https://github.co
 
 The result beats Headroom at its own strongest use case. And the reason: by targeting the specific shape (path-grouped `search_files` matches) instead of a generic compression layer, the densifier doesn't trip its own CCR threshold and skip outputs the way Headroom does.
 
-## The Bottom Line
+## Note for Future Dev
 
 Headroom's architecture is well-designed. SmartCrusher's JSON→CSV idea is a genuinely good technique — worth stealing for your own projects. But the headline 95% number is misleading, and the CCR mechanism can actually make things worse in practice.
 
