@@ -1,0 +1,64 @@
+---
+title: "Headroom: The 95% Token Savings That Wasn't"
+description: "A critical look at Headroom — the context compression library with 37k stars that claims 95% fewer tokens. Nous Research's evaluation tells a different story."
+date: "2026-06-20"
+tags: ["AI Agents", "LLM", "Context Compression", "Engineering"]
+readingTime: "5 min"
+coverImage: "/blog-featured-1.jpg"
+---
+
+## The Claim That Made Me Squint
+
+Headroom hit 37k stars on GitHub with a bold claim: **60-95% fewer tokens, same answers.**
+
+A context compression layer that sits between your agent and the LLM provider, compressing everything — tool outputs, logs, RAG chunks, files, conversation history — before it reaches the model. Sounds like exactly what every agent developer wants.
+
+I saw someone in a Vietnamese dev group share their analysis, and the first thought wasn't "wow" — it was "how do you even get to 95%?"
+
+## How Headroom Works
+
+Three mechanisms, each with a different approach:
+
+**SmartCrusher / Diff** — Lossless compression. Converts JSON, git diffs into denser formats (CSV + schema). The model reads the compressed form directly, no decoding needed. Smart idea.
+
+**CCR (Compress-Cache-Retrieve)** — Replaces large content blobs with `<<ccr:HASH>>` markers. Stores the original locally. When the model needs the real data, it calls `headroom_retrieve` to fetch it back.
+
+**Kompress-base** — A separate ML model for compression.
+
+Architecture's solid. Runs locally, data never leaves your machine, reversible. It's not snake oil in design.
+
+## The Problem With the Numbers
+
+Then Nous Research — the team behind Hermes (196k stars) — ran a thorough evaluation. 3,000 real tool outputs from an actual agent session database.
+
+The results painted a very different picture.
+
+The 60-95% savings come almost entirely from CCR. Here's the catch: CCR replaces content with a marker, **but the agent immediately retrieves the original data to work with it.** So the content lives in context twice — the marker *and* the retrieved blob. You end up spending *more* tokens than without compression.
+
+The actual lossless compression — SmartCrusher, the genuinely useful part — only applied to **6.2%** of request traffic, saving **0.34%** of tokens.
+
+Not 95%. **0.34%.**
+
+## What Actually Works
+
+To their credit, Nous verified SmartCrusher properly. 200-record array compressed and reconstructed: 200 rows, IDs 0-199, nothing lost. JSON → CSV + schema is genuinely lossless, and the model reads it directly without decoding. That part is legit.
+
+The technique itself is worth understanding — CSV with a schema header is often more token-efficient than JSON trees, and it's trivial to implement.
+
+## The CCR Risk Nobody Talks About
+
+CCR claims to be lossless (originals are stored locally). But the real problem isn't data loss — it's **whether the model remembers to retrieve.**
+
+If the model loses context, skips the retrieval call, or misinterprets the marker, it's reasoning on incomplete information. And with current LLM context blindness, missed retrievals aren't an edge case — they're the baseline.
+
+## What Nous Did Instead
+
+After the evaluation, Nous rejected Headroom as a dependency and wrote **40 lines** of custom `densify` code for their own `search_files` tool. Result: **57.8% lossless compression** — beating Headroom at its own strongest use case.
+
+Forty lines. No dependency. No CCR overhead. No markers to forget.
+
+## The Bottom Line
+
+Headroom's architecture is well-designed. SmartCrusher is a genuinely good idea — JSON → CSV compression is something worth stealing. But the headline 95% number is misleading, and the CCR mechanism can actually make things worse in practice.
+
+Sometimes you're better off understanding the principle and building the specific optimization your project needs, instead of importing an entire compression framework that might inflate your token spend rather than reduce it.
