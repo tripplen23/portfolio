@@ -3,7 +3,7 @@ title: "What Sandbox Learning Taught Me"
 description: "How I escaped information overload, moved into the terminal, and built Mew — an open source AI agent harness for migrating and reconstructing software."
 date: "2026-07-21"
 tags: ["Sandbox Learning", "Rust", "Go", "AI Agents", "Mew", "Open Source"]
-readingTime: "8 min"
+readingTime: "6 min"
 coverImage: "/blog-featured-sandbox.png"
 ---
 
@@ -15,89 +15,76 @@ Then the contract ended. No more company laptop, no more "I'll do it tomorrow." 
 
 So I did. Terminal became my whole world. C came back into my life. Rust and Go too — I fell back in love with both after years away. And somewhere in the middle of all that, a project called Mew started growing on its own.
 
-I call the way I learn now **sandbox learning**. This is what it is, how I got here, and what's coming out of it.
+I call the way I learn now **sandbox learning**.
 
 ## What is sandbox learning
 
-Forget the buzzword. Here's what I mean in plain terms.
+A sandbox is a place where you can break things on purpose.
 
-A sandbox is a place where you can break things on purpose. Sand doesn't care. Your filesystem doesn't care (if you use git). The internet doesn't care.
+Sandbox learning, for me, is:
 
-Sandbox learning, for me, is the discipline of:
-
-1. **Picking one thing to learn.** Not ten. One.
-2. **Building a tiny project around it.** A real thing, not a TODO app from a tutorial.
-3. **Running into walls.** Reading the manual *because* something broke, not before.
-4. **Keeping the box small enough that you can see the whole thing.** No microservices. No premature abstractions. A single repo, a single mental model.
-
-The "sandbox" part is non-negotiable. You have to feel like you can delete the whole folder tomorrow and start over without losing anything. That's the freedom that makes you actually try things.
+1. Pick one thing. Not ten.
+2. Build a tiny project around it. A real thing, not a TODO app.
+3. Read the manual *because* something broke, not before.
+4. Keep the box small enough to see the whole thing. No microservices. No premature abstractions.
 
 > *"Learn the rules like a professional. Break them like an artist."*
 
-I love that line because it captures the whole thing. First you learn the rules — by writing them, by fighting them, by getting your code rejected by a compiler 200 times. Then, when you finally *get* it, you get to break them on purpose.
+That's the whole game. Learn the rules by getting your code rejected by a compiler 200 times. Then break them on purpose.
 
 ## Information overload — what actually worked
 
-Look, the problem is simple. Twitter bookmarks. YouTube "Watch later." Pocket queue. Notion databases. Substack emails I'll never open. The whole "I'll get to it" garden that turns into a graveyard by Tuesday.
+Twitter bookmarks. YouTube "Watch later." Pocket queue. Notion databases. Substack emails I'll never open. The "I'll get to it" garden that turns into a graveyard by Tuesday.
 
 Three moves shut it down:
 
-**1. Killed the microslop OS completely.** Left Windows. Installed Ubuntu on every laptop I own. I wrote about this in [Why I Don't Play With Microslop OS Anymore](/blogs/why-no-microslop-os-anymore) — short version: I got tired of an OS that wanted to be my parent.
+**1. Killed the microslop OS.** Left Windows. Installed Ubuntu on every laptop I own. Wrote about it in [Why I Don't Play With Microslop OS Anymore](/blogs/why-no-microslop-os-anymore).
 
-**2. Move into the terminal.** The terminal doesn't have a "Recommended for you" feed. It doesn't have infinite scroll. It has a prompt and a blinking cursor. It forces you to *intend* every action. That alone cuts the noise by half.
+**2. Moved into the terminal.** No "Recommended for you" feed. No infinite scroll. Just a prompt and a blinking cursor. Forces you to *intend* every action.
 
-**3. Pick the three things that actually matter and ignore the rest.** Rust. Go. Agent harness engineering. Everything else can wait. If it's not in those buckets, it doesn't get a tab open.
-
-This is the "find a place, isolate, digest" loop. Find where the signal is. Isolate yourself from the rest. Then digest — slowly, by building.
+**3. Picked the three things that matter.** Rust. Go. Agent harness engineering. If it's not in those buckets, it doesn't get a tab open.
 
 ## What I built to learn
 
-### C and C++ — going back to the metal
+**C and C++.** I wrote a neural net in C++ a while back. Coming back to it after years of higher-level languages felt like coming home. Manual memory. No borrow checker. No GC. Just you, `malloc`, and a `segfault` at 2 AM. Modern languages are kind. C and C++ are honest.
 
-I'd written a neural net in C++ a while back. Going back to it after years of higher-level languages felt like coming home. Manual memory. No borrow checker. No garbage collector. Just you, `malloc`, and a `segfault` at 2 AM.
+**Rust.** I hadn't touched it in years. Picked it up again and the borrow checker made sense this time. I wrote [Learning Rust in 2026](/blogs/learning-rust-2026) because the muscle memory came back fast once I stopped fighting the language.
 
-It reminded me why these languages exist. Modern languages are kind. C and C++ are honest. They tell you exactly what your program is doing, and exactly when you messed up.
+**Go.** Doesn't try to impress you. Just does the boring thing competently. Fast builds, concurrency, a single binary you can `scp` to a server. After years of chasing shiny tools, "boring but competent" feels revolutionary.
 
-### Rust — falling back in love
+## A word on AI
 
-I hadn't touched Rust in years. Picked it up again and, weirdly, the borrow checker made sense this time. I wrote a whole setup post about it — [Learning Rust in 2026](/blogs/learning-rust-2026) — because the muscle memory came back fast once I stopped fighting the language and started writing real code with it.
+I use AI every day. Copilot, ChatGPT, Claude — they're how I move fast.
 
-### Go — quiet love
+But learning with AI is learning with a bag of bias strapped to your face. These models invent APIs that don't exist. They give you solutions that "look right" and break in production. If you don't know the fundamentals, you won't even notice you're being lied to.
 
-Go doesn't try to impress you. It just does the boring thing competently. Concurrency, fast builds, a single binary you can `scp` to a server. That's the whole pitch. After years of chasing shiny tools, "does the boring thing competently" feels revolutionary.
+Two rules:
+
+- Verify everything two ways. Open the real docs. Run the config block. See if it actually does what it claims.
+- Know the core cold. Language fundamentals. SDLC. Architecture. The boring stuff is what lets you catch the bullshit.
+
+Sandbox learning with AI is fine. Sandbox learning *only* with AI is a trap — you end up with a codebase you can't defend.
 
 ## Then Mew happened
 
-At some point, all three of these threads converged.
+At some point, all three threads converged.
 
-I'd been FOMO-ing about agent harnesses for months. Every other week, a new framework. A new protocol. A new "this changes everything." I read the announcements. I watched the demos. I felt productive. I built nothing.
+I'd been FOMO-ing about agent harnesses for months. New framework every other week. New protocol. New "this changes everything." I felt productive. I built nothing.
 
-Then one night I just... started. A Rust workspace. A Go daemon. A TUI. A name I'd been carrying in my head for years: **Mew**.
+Then one night I just started. Rust workspace. Go daemon. TUI. A name I'd been carrying for years: **Mew**.
 
-[Mew](https://github.com/tripplen23/mew) is an AI agent harness. But that's the boring description. Here's the real one:
+[Mew](https://github.com/tripplen23/mew) is an AI agent harness. The real description:
 
-> Mew is a tool for people who build software. It migrates legacy code, clones features from one product to another, and reconstructs the parts of an application that are painful to write by hand. Inspired by Mew in Pokémon — copy the original, then evolve it into something stronger and tailored.
+> Mew migrates legacy code, clones features from one product to another, and reconstructs the parts of an application that are painful to write by hand. Inspired by Mew in Pokémon — copy the original, then evolve it into something stronger.
 
-It's not a chatbot. It's not an IDE plugin. It's an agent that *does the work* — reading a codebase, understanding it, transforming it, and verifying the result actually behaves the same way it did before.
+It reads a codebase, understands it, transforms it, and verifies the result behaves the same way it did before. That last part is what made me build [mew-skills](https://github.com/tripplen23/mew-skills) as a separate repo — a spec kit for differential testing and regression scaffolding. Deep dive on that later.
 
-The "verify the result behaves the same" part is what made me build [mew-skills](https://github.com/tripplen23/mew-skills) as a separate repo. That's the spec kit — a growing library of skills that prove software clones and migrations don't change behavior. Differential testing, regression scaffolding, the boring infrastructure that makes the magic trustworthy. I'm saving the deep dive on that for another post.
+## Why this matters
 
-## Why this matters to me
-
-The thing I love about sandbox learning is that the project grows faster than you do.
-
-I started Mew with a CLI flag and a panic. Two months in, it has a workspace, a TUI, an MCP layer, differential testing, and a roadmap I can actually see. It's not done. It's not even close. But every commit is a real thing I understand because I wrote it, broke it, and fixed it.
-
-It feels like raising a Pokémon. Pick a small thing. Feed it. Take it into fights. Watch it evolve. Repeat.
-
-And here's the part I didn't expect: **the FOMO is gone.** Not because I stopped caring about new tools, but because I have a project that punishes me for not going deep. Every shallow decision in Mew shows up as a real bug later. So I learn the thing properly. I read the source. I write the test. I move on.
-
-If you're stuck in the same tab-hoarding loop I was in — bookmarking, watching, never building — here's my pitch:
+I started Mew with a CLI flag and a panic. Two months in it has a workspace, a TUI, an MCP layer, differential testing, and a roadmap I can actually see. Every commit is something I understand because I wrote it, broke it, and fixed it.
 
 > Pick one thing. Make it small enough to see. Build it in a sandbox where deleting everything is an option. Stay there until it does something real.
 
-That's it. That's the post.
-
-Mew is open source, and if you've been wanting to **learn by building** the same way I am — I'd genuinely love to collab. A spec kit you can use today lives at [tripplen23/mew-skills](https://github.com/tripplen23/mew-skills). Run it against your own codebase. Improve the regression tests. Send a PR. We'll figure out the rest together.
+Mew is open source. If you've been wanting to learn by building the same way, I'd genuinely love to collab. A spec kit you can use today lives at [tripplen23/mew-skills](https://github.com/tripplen23/mew-skills). Run it against your own codebase. Improve the regression tests. Send a PR.
 
 I'm pushing as hard as I can to get Mew into everyone's hands. Goal: GODLIKE. We'll see.
