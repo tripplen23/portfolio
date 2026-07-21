@@ -9,28 +9,31 @@ coverImage: "/blog-featured-sandbox.png"
 
 ## Reality hit
 
-Let me be honest with you. I've shipped products. I run a real business. But somewhere along the way the Rust/Go/agent-harness world was passing me by, and I was treating it like a side hobby — reading threads, skimming docs, feeling productive for an hour, building nothing in that direction.
+I've shipped products, ran real businesses. But somewhere along the way the Rust/Go/agent-harness world was always sounds fancy to me except their concepts, and I was treating it like a side hobby — reading threads, skimming docs, feeling productive for an hour, building nothing in that direction.
 
-Then the contract ended. No more company laptop, no more "I'll do it tomorrow." Just me, a bedroom studio, and one hard decision: stop consuming, start learning properly.
+Then the contract ended. No more company laptop, no more "I'll do it tomorrow." Just me, a bedroom studio, among the ocean of information and a decision of building up something cool to learn from it on the way. 
 
 So I did. Terminal became my whole world. C came back into my life. Rust and Go too — I fell back in love with both after years away. And in the middle of all that, a project called Mew just started growing on its own.
 
-I call the way I learn now **sandbox learning**.
+I call the way I learn now **sandbox learning** - Not the term I composed of course, this happens a lot out there in the Internet now.
 
-## What is sandbox learning
+## What is sandbox learning?
 
-A sandbox is a place where you can break things on purpose.
+A sandbox is a zone where you can try, fail, break things on purpose to learn from it.
 
-For me, sandbox learning is four things:
+For me, sandbox learning is:
 
 1. Pick one thing. Not ten.
 2. Build a tiny project around it. A real thing, not a TODO app.
 3. Read the manual *because* something broke, not before.
 4. Keep the box small enough to see the whole thing. No microservices, no premature abstractions.
+5. Feed your project everyday and see it grow up
+
+That's it. A safety place you can play around with your craft. 
+
+That's the builder's lens — but the same idea applies anywhere but for example if you are an artist - canvas could be your sandbox; if you are a writer - substack or blog pages are. If you are a rapper / music producer, send me your Soundcloud.
 
 > "Learn the Rules Like a Pro, So You Can Break Them Like an Artist." — Picasso
-
-That's it. Learn the rules by getting your code rejected by a compiler 200 times. Then break them on purpose.
 
 ## Information overload — what actually worked
 
@@ -40,30 +43,33 @@ So I rebuilt the whole dev environment around the way I actually want to learn �
 
 Three moves did it:
 
-**1. Killed the microslop OS.** Left Windows, installed Ubuntu on every laptop I own. No more "Recommended for you" feed, no more forced updates, no more "Hey, try this new Edge feature." Just the system, the terminal, the tools.
+**1. Killed the microslop OS.** Left Windows, installed Ubuntu on every laptop I own. No more "Recommended for you" feed, no more forced updates, no more "Hey, try this new Edge feature." Just the system, the core kernel.
 
 **2. Moved into the terminal.** A blinking cursor and a prompt. It forces you to *intend* every action. No clickbait, no algorithm, no infinite scroll. Whatever you don't type doesn't exist.
 
 **3. Picked the three things that matter.** Rust, Go, agent harness engineering. If it's not in those buckets, it doesn't get a tab open. Guardrail, not restriction — I still follow the same people, read the same papers, just through intentional channels, not algorithmic feeds.
 
-## What I built to learn
+## What I learned to build?
+
+**Harness agent.** Learn the concepts, read docs from Anthropic, Mastra, Langchain etc, conduct those main idea into the knowledge that I can use.
 
 **C and C++.** I wrote a neural net in C++ as a beginner, and that's the whole point. Manual memory, no borrow checker, no GC. Just me, `malloc`, and a `segfault` at 2 AM. It's the hard way — but the hard way gave me the foundation to actually *get* Rust later instead of just fighting it.
 
-**Rust.** I hadn't touched it in years. Picked it up again and the borrow checker made sense this time. I wrote [Learning Rust in 2026](/blogs/learning-rust-2026) because the muscle memory came back fast once I stopped fighting the language.
+**Rust.** I hadn't touched it in years. Picked it up again and the borrow checker made sense this time. I wrote [Learning Rust in 2026](/blogs/learning-rust-2026) because the muscle memory came back fast once I stopped fighting the language. For now Rust agent framework is not that as mature as the other languages but nevermind, I got the concept, just build it - at the end of the day they are just binaries.
 
-**Go.** Doesn't try to impress you. Fast builds, concurrency, a single binary you can `scp` to a server. After years of chasing shiny tools, "boring but competent" is the most underrated pitch in software.
+**Go.** Very lightweight, syntax looks lean for writing MCP with available SDK. Go for it!
 
-## A word on AI
+## Treat AI as your copilot
 
-I use AI every day. Copilot, ChatGPT, Claude — they're how I move fast.
+I use AI every day, but in an economical way. OpenCode, Open Weight models — they're how I move fast.
 
-But learning with AI is learning with a bag of bias strapped to your face. These models invent APIs that don't exist, hand you solutions that "look right" and break in production, and pattern-match your question to the most statistically common answer — which is rarely the *correct* one. If you don't know the fundamentals, you won't even notice you're being lied to.
+However, learning with AI is learning with a bag of bias strapped to your face. These models invent APIs that don't exist, hand you solutions that "look right" and break in production, and pattern-match your question to the most statistically common answer — which is rarely the *correct* one. If you don't know the fundamentals, you won't even notice you're being lied to.
 
-Two rules I won't bend on:
+Rules I won't bend on:
 
 - Verify everything two ways. Open the real docs. Run the config block. See if it actually does what it claims.
 - Know the core cold. Language fundamentals, SDLC, architecture. The boring stuff is what lets you catch the bullshit.
+- Do it by hand to understand the concept first, then enhance your productivity with AI.
 
 Sandbox learning with AI is fine. Sandbox learning *only* with AI is a trap — you end up with a codebase you can't defend.
 
@@ -71,15 +77,15 @@ Sandbox learning with AI is fine. Sandbox learning *only* with AI is a trap — 
 
 I'd been FOMO-ing about agent harnesses for months. New framework every other week, new protocol, new "this changes everything." I felt productive. I built nothing.
 
-Then one night I just started. Rust workspace, Go daemon, TUI, and a name I'd been carrying for years: **Mew**.
+Then one night I just started. Rust workspace, Go MCP Server, TUI, and a name I'd been carrying for years: **Mew**. - Yes every developers love cats.
 
-[Mew](https://github.com/tripplen23/mew) is an AI agent harness. The real description:
+[Mew](https://github.com/tripplen23/mew) is an AI agent harness can manipulate the ADN of other software:
 
 > Mew migrates legacy code, clones features from one product to another, and reconstructs the parts of an application that are painful to write by hand. Inspired by Mew in Pokémon — copy the original, then evolve it into something stronger.
 
-It reads a codebase, understands it, transforms it, and verifies the result behaves the same way it did before. That last part is what made me build [mew-skills](https://github.com/tripplen23/mew-skills) as a separate repo — a spec kit for differential testing and regression scaffolding. Deep dive on that later.
+It reads a codebase, reproduce it, understands it, transforms it, and verifies the result behaves the same way it did before. That last part is what made me build [mew-skills](https://github.com/tripplen23/mew-skills) as a separate repo — a spec kit for differential testing and regression scaffolding. Deep dive on those later on the other blogs.
 
-## Why this matters
+## Why this matters?
 
 I started Mew with a CLI flag and a panic. Two months in it has a workspace, a TUI, an MCP layer, differential testing, and a roadmap I can actually see. Every commit is something I understand because I wrote it, broke it, and fixed it.
 
@@ -88,3 +94,9 @@ I started Mew with a CLI flag and a panic. Two months in it has a workspace, a T
 Mew is open source. If you've been wanting to learn by building the same way, I'd genuinely love to collab — a spec kit you can use today lives at [tripplen23/mew-skills](https://github.com/tripplen23/mew-skills). Run it against your own codebase, improve the regression tests, send a PR.
 
 I'm pushing as hard as I can to get Mew into everyone's hands. Goal: GODLIKE. We'll see.
+
+That's where I am now. Still learning, still breaking things. If any of this resonates — drop a star, open an issue, or just say hi. The sandbox is more fun when someone else is in it.
+
+I would like to say thanks Sang Dang, my bro who sponsors me OpenAI credits on the journey. Thanks Mew for not having any segfaults since last week.
+
+See you in the next one.
